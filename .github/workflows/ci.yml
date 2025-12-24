@@ -1,0 +1,56 @@
+name: CI Check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Check if index.html exists
+        run: |
+          if [ -f index.html ]; then
+            echo "✓ File index.html tồn tại!"
+            echo "✓ Kiểm tra CI hoàn tất thành công!"
+          else
+            echo "✗ Lỗi: File index.html không tìm thấy!"
+            exit 1
+          fi
+      
+      - name: Validate HTML structure
+        run: |
+          if grep -q "<!DOCTYPE html>" index.html; then
+            echo "✓ HTML structure hợp lệ!"
+          else
+            echo "✗ Lỗi: HTML structure không hợp lệ!"
+            exit 1
+          fi
+      
+      - name: Check file size
+        run: |
+          size=$(wc -c < index.html)
+          echo "📊 Kích thước file: $size bytes"
+          if [ $size -gt 0 ]; then
+            echo "✓ File hợp lệ!"
+          else
+            echo "✗ Lỗi: File rỗng!"
+            exit 1
+          fi
+      
+      - name: Summary
+        run: |
+          echo "=========================================="
+          echo "✅ Tất cả kiểm tra CI đã vượt qua!"
+          echo "=========================================="
+          echo "Các bước kiểm tra:"
+          echo "  ✓ File index.html tồn tại"
+          echo "  ✓ HTML structure hợp lệ"
+          echo "  ✓ File không rỗng"
+          echo "=========================================="

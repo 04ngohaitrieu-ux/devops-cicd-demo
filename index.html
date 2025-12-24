@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps CI/CD Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .status-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            color: white;
+        }
+        
+        .status-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin-right: 8px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+            }
+        }
+        
+        .version {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+        
+        .features {
+            text-align: left;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .features h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .features ul {
+            list-style: none;
+            color: #34495e;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .features li:last-child {
+            border-bottom: none;
+        }
+        
+        .features li:before {
+            content: "✓ ";
+            color: #2ecc71;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .footer {
+            color: #95a5a6;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .timestamp {
+            font-size: 0.85em;
+            color: #bdc3c7;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 DevOps CI/CD Demo</h1>
+        <p class="subtitle">Chào mừng đến với buổi Demo CI/CD!</p>
+        
+        <div class="status-box">
+            <div class="status-title">
+                <span class="status-indicator"></span>
+                Trạng thái hệ thống: <strong>ONLINE</strong>
+            </div>
+            <div class="version">
+                <strong>Phiên bản:</strong> 1.0.0<br>
+                <strong>Môi trường:</strong> Production
+            </div>
+        </div>
+        
+        <div class="features">
+            <h3>🎯 Tính năng CI/CD:</h3>
+            <ul>
+                <li>Source Control - Quản lý mã nguồn trên GitHub</li>
+                <li>Continuous Integration - Kiểm tra tự động qua GitHub Actions</li>
+                <li>Continuous Deployment - Triển khai tự động lên Vercel</li>
+                <li>Real-time Updates - Cập nhật ngay khi có thay đổi</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>✨ Xây dựng bằng GitHub Actions + Vercel</p>
+            <div class="timestamp">Trang được cập nhật lần cuối: <span id="lastUpdate"></span></div>
+        </div>
+    </div>
+    
+    <script>
+        // Hiển thị thời gian cập nhật cuối cùng
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString('vi-VN');
+    </script>
+</body>
+</html>
